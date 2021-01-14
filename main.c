@@ -7,9 +7,13 @@
 #include "stb_image.h"
 
 void get_pixel(stbi_uc *image, size_t imageWidth, size_t x, size_t y, stbi_uc *r, stbi_uc *g, stbi_uc *b) {
-    *r = image[3 * (y * imageWidth + x) + 0];
-    *g = image[3 * (y * imageWidth + x) + 1];
-    *b = image[3 * (y * imageWidth + x) + 2];
+    // https://redd.it/8gyyb6
+
+    const stbi_uc *pixel = image + (3 * (y * imageWidth + x));
+
+    *r = pixel[0];
+    *g = pixel[1];
+    *b = pixel[2];
 }
 
 int main(void) {
